@@ -37,6 +37,8 @@ function getStorageObj(client, namespace) {
     return {
         get: function(id, cb) {
             client.hget(namespace, id, function(err, res) {
+                console.log('>> botkit redis hget result:', '"' + id + '"', '=', '"' + res + '"')
+                console.log('>> parsed:', JSON.parse(res))
                 cb(err, res ? JSON.parse(res) : null);
             });
         },
